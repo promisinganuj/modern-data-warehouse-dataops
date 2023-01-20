@@ -118,6 +118,9 @@ sleep 20
 assign_synapse_role_if_not_exists "$synapseworkspace_name" "Synapse Administrator" "$owner_object_id"
 assign_synapse_role_if_not_exists "$synapseworkspace_name" "Synapse Contributor" "$synapseworkspace_name"
 
+# Install additional Python Libraries - **WARNING**: This step is taking more than 20 minutes to complete
+ az synapse spark pool update --resource-group "${resource_group_name}" --workspace-name "${synapseworkspace_name}" --name "${synapse_sparkpool_name}" --library-requirements "./scripts/config/requirements.txt"
+
 ####################
 # CLS
 
